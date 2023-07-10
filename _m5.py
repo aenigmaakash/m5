@@ -184,6 +184,8 @@ def generate_pts_m5_dataset(
     # Build training set
     train_file = dataset_path / "train" / "data.json"
     # save_to_file(train_file, train_ds)
+    if not os.path.exists(dataset_path / "train"):
+        os.makedirs(dataset_path / "train")
     with open(train_file, "w") as f:
         json.dump(train_ds, f)
 
@@ -251,6 +253,8 @@ def generate_pts_m5_dataset(
         test_ds.append(time_series.copy())
 
     # save_to_file(test_file, test_ds)
+    if not os.path.exists(dataset_path / "test"):
+        os.makedirs(dataset_path / "test")
     with open(test_file, "w") as f:
         json.dump(test_ds, f)
 
